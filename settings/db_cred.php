@@ -1,7 +1,4 @@
 <?php
-//Database credentials
-// Settings/db_cred.php
-
 //this creates a connection between the database and the controllers
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');

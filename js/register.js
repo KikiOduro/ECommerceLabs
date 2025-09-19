@@ -1,5 +1,3 @@
-// register.js
-// Requires jQuery + SweetAlert2
 
 $(document).ready(function () {
   $('#register-form').submit(function (e) {
