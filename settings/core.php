@@ -1,24 +1,22 @@
-// Settings/core.php
 <?php
-session_start();
 
-
-//for header redirection
-ob_start();
-
-//funtion to check for login
-if (!isset($_SESSION['id'])) {
-    header("Location: ../login/login.php");
-    exit;
+// Always start the session
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    session_start();
 }
 
+/**
+ * Check if a user is logged in
+ * Returns true if a session variable user_id exists.
+ */
+function isLoggedIn(): bool {
+    return isset($_SESSION['user_id']);
+}
 
-//function to get user ID
-
-
-
-//function to check for role (admin, customer, etc)
-
-
-
-?>
+/**
+ * Check if the logged-in user has administrative privileges
+ * According to your schema: 2 = admin, 1 = customer.
+ */
+function isAdmin(): bool {
+    return isLoggedIn() && (int)$_SESSION['user_role'] === 2;
+}
