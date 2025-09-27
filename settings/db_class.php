@@ -19,7 +19,7 @@ if (!class_exists('db_connection')) {
         function db_connect()
         {
             //connection:
-            $this->db = mysqli_connect(SERVER, USERNAME, PASSWD, DATABASE);
+            $this->db = mysqli_connect(SERVER, USERNAME, PASSWD, DATABASE, 8889);
 
             //test the connection
             if (mysqli_connect_errno()) {
@@ -32,7 +32,7 @@ if (!class_exists('db_connection')) {
         function db_conn()
         {
             //connection
-            $this->db = mysqli_connect(SERVER, USERNAME, PASSWD, DATABASE);
+            $this->db = mysqli_connect(SERVER, USERNAME, PASSWD, DATABASE,8889);
 
             //test the connection
             if (mysqli_connect_errno()) {

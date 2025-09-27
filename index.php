@@ -3,12 +3,22 @@ session_start();
 
 include(__DIR__ . '/settings/db_class.php');
 include(__DIR__ . '/settings/db_cred.php');
+include(__DIR__ . '/settings/core.php'); 
+
+
+if (!isLoggedIn()) {
+    header("Location: login/login.php");
+    exit;
+}
+
 
 $db = new db_connection();
-
 if (!$db->db_connect()) {
     die("Database connection failed: " . mysqli_connect_error());
 }
+
+$logged_in = isLoggedIn();
+$is_admin  = isAdmin();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,9 +42,12 @@ if (!$db->db_connect()) {
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             position: sticky;
             top: 0;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        nav a {
+        nav a,
+        nav form button {
             margin-left: 15px;
             padding: 10px 14px;
             text-decoration: none;
@@ -42,12 +55,19 @@ if (!$db->db_connect()) {
             border-radius: 400px;
             color: black;
             font-size: 14px;
+            background: transparent;
+            cursor: pointer;
             transition: all 0.2s ease-in-out;
         }
 
-        nav a:hover {
+        nav a:hover,
+        nav form button:hover {
             background: black;
             color: white;
+        }
+
+        nav form {
+            display: inline;
         }
 
         main {
@@ -71,19 +91,31 @@ if (!$db->db_connect()) {
 
 <body>
     <header>
+        <div><strong>Lab1</strong></div>
         <nav>
-            <a href="login/login.php">Login</a>
-            <a href="login/register.php">Register</a>
-            <?php if (isset($_SESSION['user_id'])): ?>
-                <a href="login/logout.php">Logout</a>
+            <?php if (!$logged_in): ?>
+                <a href="login/login.php">Login</a>
+                <a href="login/register.php">Register</a>
+            <?php else: ?>
+                <?php if ($is_admin): ?>
+                    <a href="admin/category.php">Category</a>
+                <?php endif; ?>
+                <form action="login/logout.php" method="post">
+                    <button type="submit">Logout</button>
+                </form>
             <?php endif; ?>
         </nav>
-
     </header>
 
     <main>
         <h1>Welcome</h1>
-        <p>Choose an option from the menu to get started.</p>
+        <p>
+            <?php if ($logged_in): ?>
+                You are logged in as <?php echo htmlspecialchars($_SESSION['user_name']); ?>.
+            <?php else: ?>
+                Choose an option from the menu to get started.
+            <?php endif; ?>
+        </p>
     </main>
 </body>
 
