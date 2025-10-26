@@ -17,9 +17,13 @@ if (!class_exists('db_connection')) {
         private function ensure_connected(): bool
         {
             if ($this->db instanceof mysqli) {
-                // already connected and alive?
-                if (@mysqli_ping($this->db)) return true;
+                if (method_exists($this->db, 'ping')) {
+                    $alive = $this->db->ping();
+                    return $alive === true;
+                }
             }
+            
+
 
             // Try TCP (host + port) first
             $host   = defined('SERVER') ? SERVER : '127.0.0.1';
