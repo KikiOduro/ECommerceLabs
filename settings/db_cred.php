@@ -1,4 +1,6 @@
 <?php
+// Prevents re-execution if this file is included twice
+if (defined('SERVER')) { return; } 
 // PHP 7 compatibility for str_contains
 if (!function_exists('str_contains')) {
     function str_contains($haystack, $needle) {
