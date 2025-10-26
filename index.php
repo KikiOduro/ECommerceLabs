@@ -69,6 +69,7 @@ $user_name = $logged_in ? ($_SESSION['user_name'] ?? 'User') : '';
           <!-- Admin shortcuts -->
           <a href="admin/category.php">Category</a>
           <a href="admin/brand.php">Brand</a>
+          <a href="admin/product.php">Product</a>
         <?php endif; ?>
         <form action="login/logout.php" method="post">
           <button type="submit">Logout</button>
