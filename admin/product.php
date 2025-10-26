@@ -165,12 +165,34 @@ $cats = fetch_categories_ctr((int)$_SESSION['user_id']);
             border-radius: 8px;
             border: 1px solid #eee;
         }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            margin-left: 25px;
+
+        }
+
+        .logo {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+            transform: scale(1.6);
+            transform-origin: left center;
+            margin-left: 15px;
+
+        }
     </style>
 </head>
 
 <body>
     <header>
-        <div><strong>RadiantRoot</strong></div>
+        <div class="brand">
+            <a href="../index.php">
+                <img src="../assets/Radiant.png" alt="RadiantRoot Logo" class="logo">
+            </a>
+        </div>
+
         <nav>
             <a href="../index.php">Home</a>
             <a href="category.php">Category</a>

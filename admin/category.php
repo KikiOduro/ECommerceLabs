@@ -190,7 +190,6 @@ if (!isLoggedIn() || !isAdmin()) {
       margin-right: 8px;
     }
 
-    /* Inline input inside table */
     .cat-name {
       width: 100%;
       max-width: 260px;
@@ -199,6 +198,23 @@ if (!isLoggedIn() || !isAdmin()) {
       border-radius: 8px;
       background: #fff;
       font-size: 14px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      margin-left: 25px;
+
+    }
+
+    .logo {
+      height: 50px;
+      width: auto;
+      object-fit: contain;
+      transform: scale(1.6);
+      transform-origin: left center;
+      margin-left: 15px;
+
     }
 
     @media (max-width:700px) {
@@ -215,9 +231,13 @@ if (!isLoggedIn() || !isAdmin()) {
 </head>
 
 <body>
-  <!-- HEADER -->
   <header>
-    <div><strong>RadiantRoot</strong></div>
+    <div class="brand">
+      <a href="../index.php">
+        <img src="../assets/Radiant.png" alt="RadiantRoot Logo" class="logo">
+      </a>
+    </div>
+
     <nav>
       <a href="../index.php">Home</a>
       <a href="brand.php">Brand</a>
