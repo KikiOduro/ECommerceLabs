@@ -33,7 +33,7 @@ $product_folder = $user_folder . DIRECTORY_SEPARATOR . 'p' . $pid;
 
 // Ensure user folder exists
 if (!is_dir($user_folder)) {
-  if (!mkdir($user_folder, 0755, true)) {
+  if (!mkdir($user_folder, recursive: true)) {
     echo json_encode(['status' => 'error', 'message' => 'Failed to create user folder']);
     exit;
   }
@@ -41,12 +41,11 @@ if (!is_dir($user_folder)) {
 
 // Ensure product folder exists
 if (!is_dir($product_folder)) {
-  if (!mkdir($product_folder, 0755, true)) {
+  if (!mkdir($product_folder, recursive: true)) {
     echo json_encode(['status' => 'error', 'message' => 'Failed to create product folder']);
     exit;
   }
 }
-
 // ---- validate file ----
 $max_bytes   = 5 * 1024 * 1024; // 5MB
 $allowed_ext = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
