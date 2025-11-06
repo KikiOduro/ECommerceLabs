@@ -59,19 +59,30 @@ class Product extends db_connection
     // Admin listing by owner (used in admin/product.php)
     public function getByUser(int $user_id): array
     {
-        $sql = "SELECT p.product_id, p.product_title, p.product_price,
-                       p.product_desc, p.product_image, p.product_keywords, p.created_at,
-                       c.cat_id, c.cat_name, b.brand_id, b.brand_name
-                  FROM products p
-                  JOIN categories c ON c.cat_id = p.product_cat
-                  JOIN brands b     ON b.brand_id = p.product_brand
-                 WHERE p.created_by = ?
-              ORDER BY c.cat_name, b.brand_name, p.product_title";
+        $sql = "
+        SELECT
+            p.product_id,
+            p.product_cat   AS cat_id,
+            p.product_brand AS brand_id,
+            p.product_title,
+            p.product_price,
+            p.product_desc,
+            p.product_image,
+            p.product_keywords,
+            c.cat_name,
+            b.brand_name
+        FROM products p
+        JOIN categories c ON c.cat_id  = p.product_cat
+        JOIN brands     b ON b.brand_id = p.product_brand
+        WHERE c.created_by = ?
+        ORDER BY p.product_id DESC
+    ";
         $st = $this->db->prepare($sql);
-        $st->bind_param("i", $user_id);
+        $st->bind_param('i', $user_id);
         $st->execute();
         return $st->get_result()->fetch_all(MYSQLI_ASSOC);
     }
+
 
     /* ========= STORE FRONT (NEW) ========= */
 
