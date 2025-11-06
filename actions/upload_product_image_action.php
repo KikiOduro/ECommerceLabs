@@ -1,11 +1,11 @@
 <?php
 
-declare(strict_types=1);
+// declare(strict_types=1);
 
-// ---- errors to log (not screen) ----
-ini_set('display_errors', '0');
-ini_set('log_errors', '1');
-error_reporting(E_ALL);
+// // ---- errors to log (not screen) ----
+// ini_set('display_errors', '0');
+// ini_set('log_errors', '1');
+// error_reporting(E_ALL);
 
 header('Content-Type: application/json');
 
@@ -28,10 +28,10 @@ if ($pid <= 0 || empty($_FILES['image']['tmp_name'])) {
 
 // ---- uploads root (must already exist & be writable) ----
 $uploads_root = '../uploads'; // /public_html/uploads
-if (!$uploads_root || !is_dir($uploads_root) || !is_writable($uploads_root)) {
-  echo json_encode(['status' => 'error', 'message' => 'Uploads folder missing or not writable']);
-  exit;
-}
+// if (!$uploads_root || !is_dir($uploads_root) || !is_writable($uploads_root)) {
+//   echo json_encode(['status' => 'error', 'message' => 'Uploads folder missing or not writable']);
+//   exit;
+// }
 
 // ---- validate file ----
 $max_bytes   = 5 * 1024 * 1024; // 5MB
@@ -74,7 +74,7 @@ if (!move_uploaded_file($_FILES['image']['tmp_name'], $target_abs)) {
 }
 
 // set safe perms (best-effort)
-@chmod($target_abs, 0644);
+// @chmod($target_abs, 0644);
 
 // ---- update product record with relative path ----
 $ok = update_product_image_ctr($user_id, $pid, $relative);
