@@ -26,10 +26,14 @@ if ($pid <= 0 || empty($_FILES['image']['tmp_name'])) {
   exit;
 }
 
-// ---- uploads root (must already exist & be writable) ----
-$uploads_root = '../uploads'; // /public_html/uploads
-if (!$uploads_root || !is_dir($uploads_root) || !is_writable($uploads_root)) {
-  echo json_encode(['status' => 'error', 'message' => 'Uploads folder missing or not writable']);
+// ---- uploads root and product folder check ----
+$uploads_root = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'uploads';
+$user_folder = $uploads_root . DIRECTORY_SEPARATOR . 'u' . $user_id;
+$product_folder = $user_folder . DIRECTORY_SEPARATOR . 'p' . $pid;
+
+// Check if the required folders exist
+if (!is_dir($uploads_root) || !is_dir($user_folder) || !is_dir($product_folder)) {
+  echo json_encode(['status' => 'error', 'message' => 'Required upload directory structure not found']);
   exit;
 }
 
@@ -63,10 +67,10 @@ if (!$mime_ok) {
   exit;
 }
 
-// ---- build a unique filename and save directly in /uploads ----
+// ---- build a unique filename and save in product-specific folder ----
 $basename   = 'img_' . uniqid('', true) . '.' . $ext;
-$target_abs = $uploads_root . '/' . $basename;    // absolute FS path
-$relative   = '../uploads/' . $basename;         // what we store in DB
+$target_abs = $product_folder . DIRECTORY_SEPARATOR . $basename;    // absolute FS path
+$relative   = 'uploads/u' . $user_id . '/p' . $pid . '/' . $basename;  // relative path for DB
 
 if (!move_uploaded_file($_FILES['image']['tmp_name'], $target_abs)) {
   echo json_encode(['status' => 'error', 'message' => 'Failed to move uploaded file']);
