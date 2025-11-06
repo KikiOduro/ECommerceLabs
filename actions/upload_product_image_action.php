@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 // ---- errors to log (not screen) ----
@@ -26,7 +27,7 @@ if ($pid <= 0 || empty($_FILES['image']['tmp_name'])) {
 }
 
 // ---- uploads root (must already exist & be writable) ----
-$uploads_root = realpath(__DIR__ . '/../uploads'); // /public_html/uploads
+$uploads_root = '../uploads'; // /public_html/uploads
 if (!$uploads_root || !is_dir($uploads_root) || !is_writable($uploads_root)) {
   echo json_encode(['status' => 'error', 'message' => 'Uploads folder missing or not writable']);
   exit;
@@ -65,7 +66,7 @@ if (!$mime_ok) {
 // ---- build a unique filename and save directly in /uploads ----
 $basename   = 'img_' . uniqid('', true) . '.' . $ext;
 $target_abs = $uploads_root . '/' . $basename;    // absolute FS path
-$relative   = 'uploads/' . $basename;             // what we store in DB
+$relative   = '../uploads/' . $basename;             // what we store in DB
 
 if (!move_uploaded_file($_FILES['image']['tmp_name'], $target_abs)) {
   echo json_encode(['status' => 'error', 'message' => 'Failed to move uploaded file']);
