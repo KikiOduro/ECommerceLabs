@@ -66,15 +66,12 @@ if (!$mime_ok) {
 // ---- build a unique filename and save directly in /uploads ----
 $basename   = 'img_' . uniqid('', true) . '.' . $ext;
 $target_abs = $uploads_root . '/' . $basename;    // absolute FS path
-$relative   = '../uploads/' . $basename;             // what we store in DB
+$relative   = '../uploads/' . $basename;         // what we store in DB
 
 if (!move_uploaded_file($_FILES['image']['tmp_name'], $target_abs)) {
   echo json_encode(['status' => 'error', 'message' => 'Failed to move uploaded file']);
   exit;
 }
-
-// set safe perms (best-effort)
-// @chmod($target_abs, 0644);
 
 // ---- update product record with relative path ----
 $ok = update_product_image_ctr($user_id, $pid, $relative);
