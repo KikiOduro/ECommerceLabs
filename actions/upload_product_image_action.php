@@ -27,14 +27,24 @@ if ($pid <= 0 || empty($_FILES['image']['tmp_name'])) {
 }
 
 // ---- uploads root and product folder check ----
-$uploads_root = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'uploads';
+$uploads_root = '../uploads';
 $user_folder = $uploads_root . DIRECTORY_SEPARATOR . 'u' . $user_id;
 $product_folder = $user_folder . DIRECTORY_SEPARATOR . 'p' . $pid;
 
-// Check if the required folders exist
-if (!is_dir($uploads_root) || !is_dir($user_folder) || !is_dir($product_folder)) {
-  echo json_encode(['status' => 'error', 'message' => 'Required upload directory structure not found']);
-  exit;
+// Ensure user folder exists
+if (!is_dir($user_folder)) {
+  if (!mkdir($user_folder, 0755, true)) {
+    echo json_encode(['status' => 'error', 'message' => 'Failed to create user folder']);
+    exit;
+  }
+}
+
+// Ensure product folder exists
+if (!is_dir($product_folder)) {
+  if (!mkdir($product_folder, 0755, true)) {
+    echo json_encode(['status' => 'error', 'message' => 'Failed to create product folder']);
+    exit;
+  }
 }
 
 // ---- validate file ----
