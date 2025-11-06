@@ -28,10 +28,10 @@ if ($pid <= 0 || empty($_FILES['image']['tmp_name'])) {
 
 // ---- uploads root (must already exist & be writable) ----
 $uploads_root = '../uploads'; // /public_html/uploads
-// if (!$uploads_root || !is_dir($uploads_root) || !is_writable($uploads_root)) {
-//   echo json_encode(['status' => 'error', 'message' => 'Uploads folder missing or not writable']);
-//   exit;
-// }
+if (!$uploads_root || !is_dir($uploads_root) || !is_writable($uploads_root)) {
+  echo json_encode(['status' => 'error', 'message' => 'Uploads folder missing or not writable']);
+  exit;
+}
 
 // ---- validate file ----
 $max_bytes   = 5 * 1024 * 1024; // 5MB
