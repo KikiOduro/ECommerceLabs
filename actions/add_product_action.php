@@ -1,5 +1,6 @@
 <?php
 header('Content-Type: application/json');
+
 require_once __DIR__ . '/../settings/core.php';
 require_once __DIR__ . '/../controllers/product_controller.php';
 

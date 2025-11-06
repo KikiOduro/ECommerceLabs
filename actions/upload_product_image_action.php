@@ -62,7 +62,7 @@ if (!move_uploaded_file($_FILES['image']['tmp_name'], $target_abs)) {
 }
 
 // store relative path
-$relative = 'uploads/u' . $user_id . '/p' . $pid . '/' . $basename;
+$relative = '../uploads/u' . $user_id . '/p' . $pid . '/' . $basename;
 
 $ok = update_product_image_ctr($user_id, $pid, $relative);
 echo json_encode($ok ? ['status'=>'success','path'=>$relative,'message'=>'Image uploaded']
