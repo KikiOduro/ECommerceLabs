@@ -16,7 +16,7 @@ if (!$raw) {
     if (preg_match('#^https?://#i', $raw)) {
         $img = $raw;                         // already absolute
     } else {
-        $img = '/~akua.oduro/' . ltrim($raw, '/'); // make relative path public on live
+        $img = '/~egale-zoyiku/' . ltrim($raw, '/'); // make relative path public on live
     }
 }
 ?>
