@@ -162,14 +162,27 @@ $user_name = $_SESSION['user_name'] ?? 'User';
             color: #fff;
             text-align: center;
             font-size: 12px;
+
         }
+
+        .logo {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+            transform: scale(1.9);
+            transform-origin: left center;
+            margin-left: 15px;
+        
+        }
+
+
     </style>
 </head>
 
 <body>
     <header>
         <div style="display:flex;align-items:center;gap:10px;">
-            <img src="../assets/Radiant.png" alt="RadiantRoot" style="height:28px; width:auto;">
+            <img src="../assets/Radiant.png" alt="RadiantRoot" class="logo">
         </div>
         <nav>
             <a href="../all_product.php">Shop <span id="cart-count" class="badge">0</span></a>
