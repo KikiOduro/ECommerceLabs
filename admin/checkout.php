@@ -136,7 +136,7 @@ $is_admin  = isAdmin();
 <body>
     <header>
         <div style="display:flex;align-items:center;gap:10px;">
-            <img src="assets/logo.png" alt="RadiantRoot" style="height:28px;width:auto;">
+            <img src="../assets/Radiant.png" alt="RadiantRoot" style="height:28px;width:auto;">
         </div>
         <nav>
             <a href="../all_product.php">Shop</a>
