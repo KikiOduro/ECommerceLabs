@@ -165,7 +165,7 @@ if (!$raw) {
         // Live prefix for relative images (used by cart.js’ imgUrl too)
         window.PUBLIC_PREFIX = window.PUBLIC_PREFIX || '/~egale-zoyiku/';
     </script>
-    <script src="js/cart.js"></script>
+    <script src="../js/cart.js"></script>
 </body>
 
 </html>
