@@ -13,7 +13,7 @@ $(function () {
     };
   
     // If your public path uses a user path like /~akua.oduro, set it here once:
-    const PUBLIC_PREFIX = window.PUBLIC_PREFIX || '/~akua.oduro/';
+    const PUBLIC_PREFIX = window.PUBLIC_PREFIX || '/~egale-zoyiku/';
   
     // ---------- HELPERS ----------
     function toastOK(title, text) {
