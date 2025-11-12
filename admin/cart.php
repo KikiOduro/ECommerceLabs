@@ -172,13 +172,13 @@ $user_name = $_SESSION['user_name'] ?? 'User';
             <img src="assets/logo.png" alt="RadiantRoot" style="height:28px; width:auto;">
         </div>
         <nav>
-            <a href="all_product.php">Shop <span id="cart-count" class="badge">0</span></a>
+            <a href="../all_product.php">Shop <span id="cart-count" class="badge">0</span></a>
             <?php if ($is_admin): ?>
                 <a href="admin/category.php">Category</a>
                 <a href="admin/brand.php">Brand</a>
                 <a href="admin/product.php">Product</a>
             <?php endif; ?>
-            <form action="login/logout.php" method="post"><button type="submit">Logout</button></form>
+            <form action="../login/logout.php" method="post"><button type="submit">Logout</button></form>
         </nav>
     </header>
 
