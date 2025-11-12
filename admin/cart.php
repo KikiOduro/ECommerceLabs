@@ -186,8 +186,8 @@ $user_name = $_SESSION['user_name'] ?? 'User';
         <h1>Your Cart</h1>
 
         <div class="toolbar">
-            <a class="btn" href="all_product.php">Continue Shopping</a>
-            <a class="btn" href="checkout.php">Proceed to Checkout</a>
+            <a class="btn" href="product.php">Continue Shopping</a>
+            <a class="btn" href="../checkout.php">Proceed to Checkout</a>
             <button class="btn" id="empty-cart">Empty Cart</button>
         </div>
 

@@ -173,9 +173,9 @@ $is_admin  = isAdmin();
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         // endpoints for both summary fetch + process checkout
-        const CART_FETCH_URL = 'actions/get_cart_action.php';
-        window.CHECKOUT_ENDPOINT = 'actions/process_checkout_action.php';
-        window.PUBLIC_PREFIX = window.PUBLIC_PREFIX || '/~akua.oduro/';
+        const CART_FETCH_URL = '../actions/get_cart_action.php';
+        window.CHECKOUT_ENDPOINT = '../actions/process_checkout_action.php';
+        window.PUBLIC_PREFIX = window.PUBLIC_PREFIX || '/~egale-zoyiku/';
 
         function escapeHtml(s) {
             return (s || '').replace(/[&<>"']/g, m => ({
