@@ -58,9 +58,17 @@ $user_name = $_SESSION['user_name'] ?? 'User';
             box-shadow: var(--shadow);
         }
 
+        /* ✨ NEW: make the nav itself a flex row */
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            /* controls spacing between items */
+        }
+
+        /* remove margin-left; let gap handle spacing */
         nav a,
         nav form button {
-            margin-left: 15px;
             padding: 10px 14px;
             text-decoration: none;
             border: 1px solid var(--border);
@@ -76,6 +84,11 @@ $user_name = $_SESSION['user_name'] ?? 'User';
         nav form button:hover {
             background: #000;
             color: #fff;
+        }
+
+        /* keep the logout form inline so it behaves like a link */
+        nav form {
+            margin: 0;
         }
 
         main {
@@ -162,7 +175,6 @@ $user_name = $_SESSION['user_name'] ?? 'User';
             color: #fff;
             text-align: center;
             font-size: 12px;
-
         }
 
         .logo {
@@ -172,11 +184,9 @@ $user_name = $_SESSION['user_name'] ?? 'User';
             transform: scale(1.9);
             transform-origin: left center;
             margin-left: 15px;
-        
         }
-
-
     </style>
+
 </head>
 
 <body>

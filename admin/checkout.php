@@ -52,9 +52,17 @@ $is_admin  = isAdmin();
             box-shadow: var(--shadow);
         }
 
+        /* ✨ NEW: make the nav itself a flex row */
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            /* controls spacing between items */
+        }
+
+        /* remove margin-left; let gap handle spacing */
         nav a,
         nav form button {
-            margin-left: 15px;
             padding: 10px 14px;
             text-decoration: none;
             border: 1px solid var(--border);
@@ -72,6 +80,11 @@ $is_admin  = isAdmin();
             color: #fff;
         }
 
+        /* keep the logout form inline so it behaves like a link */
+        nav form {
+            margin: 0;
+        }
+
         main {
             max-width: 1000px;
             margin: 40px auto;
@@ -82,36 +95,11 @@ $is_admin  = isAdmin();
             margin: 0 0 16px;
         }
 
-        .summary {
-            background: #fff;
-            border: 1px solid #eee;
-            border-radius: 12px;
-            padding: 16px;
-        }
-
-        .row {
-            display: grid;
-            grid-template-columns: 64px 1fr auto auto;
-            gap: 12px;
-            align-items: center;
-            padding: 10px 0;
-            border-top: 1px solid #eee;
-        }
-
-        .row:first-child {
-            border-top: none;
-        }
-
-        .thumb {
-            width: 64px;
-            height: 64px;
-            object-fit: cover;
-            border: 1px solid #eee;
-            border-radius: 8px;
-        }
-
-        .muted {
-            color: var(--muted);
+        .toolbar {
+            display: flex;
+            gap: 10px;
+            margin: 10px 0 20px;
+            flex-wrap: wrap;
         }
 
         .btn {
@@ -127,11 +115,61 @@ $is_admin  = isAdmin();
             color: #fff;
         }
 
-        .totals {
-            margin-top: 12px;
+        #cart-items .cart-row {
+            display: grid;
+            grid-template-columns: 64px 1fr auto auto auto;
+            gap: 12px;
+            align-items: center;
+            padding: 12px 0;
+            border-top: 1px solid #eee;
         }
 
+        #cart-items .cart-row:first-child {
+            border-top: none;
+        }
 
+        .thumb {
+            width: 64px;
+            height: 64px;
+            object-fit: cover;
+            border: 1px solid #eee;
+            border-radius: 8px;
+        }
+
+        .info .title {
+            font-weight: 600;
+        }
+
+        .info .price {
+            color: var(--muted);
+            margin-top: 4px;
+        }
+
+        .qty {
+            width: 80px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+
+        .totals {
+            margin-top: 20px;
+            padding: 16px;
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 12px;
+        }
+
+        .badge {
+            display: inline-block;
+            min-width: 22px;
+            padding: 2px 6px;
+            border-radius: 12px;
+            background: #000;
+            color: #fff;
+            text-align: center;
+            font-size: 12px;
+        }
 
         .logo {
             height: 60px;
@@ -140,10 +178,9 @@ $is_admin  = isAdmin();
             transform: scale(1.9);
             transform-origin: left center;
             margin-left: 15px;
-        
         }
-
     </style>
+
 </head>
 
 <body>
