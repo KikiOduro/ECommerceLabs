@@ -185,6 +185,20 @@ $cats = fetch_categories_ctr((int)$_SESSION['user_id']);
     </style>
 </head>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <body>
     <header>
         <div class="brand">
@@ -228,6 +242,9 @@ $cats = fetch_categories_ctr((int)$_SESSION['user_id']);
                     <input type="file" id="image" accept="image/*">
                     <button type="submit" class="btn" id="saveBtn">Save</button>
                     <button type="button" class="btn" id="resetBtn">Reset</button>
+
+
+
                 </div>
             </form>
         </div>
