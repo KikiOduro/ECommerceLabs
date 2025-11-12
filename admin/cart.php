@@ -208,7 +208,7 @@ $user_name = $_SESSION['user_name'] ?? 'User';
             fetch: 'actions/get_cart_action.php'
         };
         // if your live server uses /~username/, set PUBLIC_PREFIX once:
-        window.PUBLIC_PREFIX = window.PUBLIC_PREFIX || '/~akua.oduro/';
+        window.PUBLIC_PREFIX = window.PUBLIC_PREFIX || '/~egale-zoyiku/';
     </script>
     <script src="js/cart.js"></script>
 </body>
