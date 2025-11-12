@@ -6,7 +6,8 @@ error_reporting(E_ALL);
 if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
 }
-require_once __DIR__ . '/settings/core.php';
+require_once '../settings/core.php';
+
 if (!isLoggedIn()) {
     header('Location: login/login.php');
     exit;
