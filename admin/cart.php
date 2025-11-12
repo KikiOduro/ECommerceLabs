@@ -114,6 +114,7 @@ $user_name = $_SESSION['user_name'] ?? 'User';
             border-radius: 400px;
             background: transparent;
             cursor: pointer;
+            text-decoration: none;
         }
 
         .btn:hover {
