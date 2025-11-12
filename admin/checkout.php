@@ -18,168 +18,167 @@ $is_admin  = isAdmin();
     <meta charset="utf-8">
     <title>Checkout • RadiantRoot</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        :root {
-            --pink: #ffc0cb;
-            --text: #333;
-            --muted: #555;
-            --border: #000;
-            --white: #fff;
-            --bg: #f4f6f8;
-            --shadow: 0 2px 4px rgba(0, 0, 0, .1);
-        }
+<style>
+    :root {
+        --pink: #ffc0cb;
+        --text: #333;
+        --muted: #555;
+        --border: #000;
+        --white: #fff;
+        --bg: #f4f6f8;
+        --shadow: 0 2px 4px rgba(0, 0, 0, .1);
+    }
 
-        * {
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
+    * {
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
 
-        body {
-            margin: 0;
-            background: var(--bg);
-            color: var(--text);
-        }
+    body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+    }
 
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 30px;
-            background: var(--pink);
-            box-shadow: var(--shadow);
-        }
+    header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 30px;
+        background: var(--pink);
+        box-shadow: var(--shadow);
+    }
 
-        /* ✨ NEW: make the nav itself a flex row */
-        nav {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            /* controls spacing between items */
-        }
+    /* ✨ NEW: make the nav itself a flex row */
+    nav {
+        display: flex;
+        align-items: center;
+        gap: 15px;           /* controls spacing between items */
+    }
 
-        /* remove margin-left; let gap handle spacing */
-        nav a,
-        nav form button {
-            padding: 10px 14px;
-            text-decoration: none;
-            border: 1px solid var(--border);
-            border-radius: 400px;
-            background: transparent;
-            color: var(--border);
-            font-size: 14px;
-            cursor: pointer;
-            transition: .2s;
-        }
+    /* remove margin-left; let gap handle spacing */
+    nav a,
+    nav form button {
+        padding: 10px 14px;
+        text-decoration: none;
+        border: 1px solid var(--border);
+        border-radius: 400px;
+        background: transparent;
+        color: var(--border);
+        font-size: 14px;
+        cursor: pointer;
+        transition: .2s;
+    }
 
-        nav a:hover,
-        nav form button:hover {
-            background: #000;
-            color: #fff;
-        }
+    nav a:hover,
+    nav form button:hover {
+        background: #000;
+        color: #fff;
+    }
 
-        /* keep the logout form inline so it behaves like a link */
-        nav form {
-            margin: 0;
-        }
+    /* keep the logout form inline so it behaves like a link */
+    nav form {
+        margin: 0;
+    }
 
-        main {
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
+    main {
+        max-width: 1000px;
+        margin: 40px auto;
+        padding: 0 20px;
+    }
 
-        h1 {
-            margin: 0 0 16px;
-        }
+    h1 {
+        margin: 0 0 16px;
+    }
 
-        .toolbar {
-            display: flex;
-            gap: 10px;
-            margin: 10px 0 20px;
-            flex-wrap: wrap;
-        }
+    .toolbar {
+        display: flex;
+        gap: 10px;
+        margin: 10px 0 20px;
+        flex-wrap: wrap;
+    }
 
-        .btn {
-            padding: 10px 14px;
-            border: 1px solid var(--border);
-            border-radius: 400px;
-            background: transparent;
-            cursor: pointer;
-        }
+    .btn {
+        padding: 10px 14px;
+        border: 1px solid var(--border);
+        border-radius: 400px;
+        background: transparent;
+        cursor: pointer;
+    }
 
-        .btn:hover {
-            background: #000;
-            color: #fff;
-        }
+    .btn:hover {
+        background: #000;
+        color: #fff;
+    }
 
-        #cart-items .cart-row {
-            display: grid;
-            grid-template-columns: 64px 1fr auto auto auto;
-            gap: 12px;
-            align-items: center;
-            padding: 12px 0;
-            border-top: 1px solid #eee;
-        }
+    #cart-items .cart-row {
+        display: grid;
+        grid-template-columns: 64px 1fr auto auto auto;
+        gap: 12px;
+        align-items: center;
+        padding: 12px 0;
+        border-top: 1px solid #eee;
+    }
 
-        #cart-items .cart-row:first-child {
-            border-top: none;
-        }
+    #cart-items .cart-row:first-child {
+        border-top: none;
+    }
 
-        .thumb {
-            width: 64px;
-            height: 64px;
-            object-fit: cover;
-            border: 1px solid #eee;
-            border-radius: 8px;
-        }
+    .thumb {
+        width: 64px;
+        height: 64px;
+        object-fit: cover;
+        border: 1px solid #eee;
+        border-radius: 8px;
+    }
 
-        .info .title {
-            font-weight: 600;
-        }
+    .info .title {
+        font-weight: 600;
+    }
 
-        .info .price {
-            color: var(--muted);
-            margin-top: 4px;
-        }
+    .info .price {
+        color: var(--muted);
+        margin-top: 4px;
+    }
 
-        .qty {
-            width: 80px;
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-        }
+    .qty {
+        width: 80px;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+    }
 
-        .totals {
-            margin-top: 20px;
-            padding: 16px;
-            background: #fff;
-            border: 1px solid #eee;
-            border-radius: 12px;
-        }
+    .totals {
+        margin-top: 20px;
+        padding: 16px;
+        background: #fff;
+        border: 1px solid #eee;
+        border-radius: 12px;
+    }
 
-        .badge {
-            display: inline-block;
-            min-width: 22px;
-            padding: 2px 6px;
-            border-radius: 12px;
-            background: #000;
-            color: #fff;
-            text-align: center;
-            font-size: 12px;
-        }
+    .badge {
+        display: inline-block;
+        min-width: 22px;
+        padding: 2px 6px;
+        border-radius: 12px;
+        background: #000;
+        color: #fff;
+        text-align: center;
+        font-size: 12px;
+    }
 
-        .logo {
-            height: 60px;
-            width: auto;
-            object-fit: contain;
-            transform: scale(1.9);
-            transform-origin: left center;
-            margin-left: 15px;
-        }
-    </style>
+    .logo {
+        height: 60px;
+        width: auto;
+        object-fit: contain;
+        transform: scale(1.9);
+        transform-origin: left center;
+        margin-left: 15px;
+    }
+</style>
 
 </head>
 
