@@ -52,9 +52,16 @@ $is_admin  = isAdmin();
             box-shadow: var(--shadow);
         }
 
+        /* NEW: make nav a flex row with even spacing */
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* remove margin-left; let gap control spacing */
         nav a,
         nav form button {
-            margin-left: 15px;
             padding: 10px 14px;
             text-decoration: none;
             border: 1px solid var(--border);
@@ -70,6 +77,11 @@ $is_admin  = isAdmin();
         nav form button:hover {
             background: #000;
             color: #fff;
+        }
+
+        /* keep logout form inline */
+        nav form {
+            margin: 0;
         }
 
         main {
@@ -140,9 +152,8 @@ $is_admin  = isAdmin();
             transform: scale(1.9);
             transform-origin: left center;
             margin-left: 15px;
-        
-        }
 
+        }
     </style>
 </head>
 
