@@ -440,7 +440,6 @@ function e($s)
                     <!-- Cart button for logged-in users -->
                     <a href="admin/cart.php">
                         Cart
-                        <span id="cart-count" class="badge">0</span>
                     </a>
 
                     <?php if ($is_admin): ?>
