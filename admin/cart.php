@@ -206,11 +206,11 @@ $user_name = $_SESSION['user_name'] ?? 'User';
     <script>
         // set endpoints for cart.js (root-relative)
         window.CART_ENDPOINTS = {
-            add: 'actions/add_to_cart_action.php',
-            remove: 'actions/remove_from_cart_action.php',
-            update: 'actions/update_quantity_action.php',
-            empty: 'actions/empty_cart_action.php',
-            fetch: 'actions/get_cart_action.php'
+            add: '../actions/add_to_cart_action.php',
+            remove: '../actions/remove_from_cart_action.php',
+            update: '../actions/update_quantity_action.php',
+            empty: '../actions/empty_cart_action.php',
+            fetch: '../actions/get_cart_action.php'
         };
         // if your live server uses /~username/, set PUBLIC_PREFIX once:
         window.PUBLIC_PREFIX = window.PUBLIC_PREFIX || '/~egale-zoyiku/';
