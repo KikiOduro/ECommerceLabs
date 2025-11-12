@@ -18,168 +18,132 @@ $is_admin  = isAdmin();
     <meta charset="utf-8">
     <title>Checkout • RadiantRoot</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-    :root {
-        --pink: #ffc0cb;
-        --text: #333;
-        --muted: #555;
-        --border: #000;
-        --white: #fff;
-        --bg: #f4f6f8;
-        --shadow: 0 2px 4px rgba(0, 0, 0, .1);
-    }
+    <style>
+        :root {
+            --pink: #ffc0cb;
+            --text: #333;
+            --muted: #555;
+            --border: #000;
+            --white: #fff;
+            --bg: #f4f6f8;
+            --shadow: 0 2px 4px rgba(0, 0, 0, .1);
+        }
 
-    * {
-        box-sizing: border-box;
-        font-family: Arial, sans-serif;
-    }
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
 
-    body {
-        margin: 0;
-        background: var(--bg);
-        color: var(--text);
-    }
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+        }
 
-    header {
-        position: sticky;
-        top: 0;
-        z-index: 10;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 30px;
-        background: var(--pink);
-        box-shadow: var(--shadow);
-    }
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 30px;
+            background: var(--pink);
+            box-shadow: var(--shadow);
+        }
 
-    /* ✨ NEW: make the nav itself a flex row */
-    nav {
-        display: flex;
-        align-items: center;
-        gap: 15px;           /* controls spacing between items */
-    }
+        nav a,
+        nav form button {
+            margin-left: 15px;
+            padding: 10px 14px;
+            text-decoration: none;
+            border: 1px solid var(--border);
+            border-radius: 400px;
+            background: transparent;
+            color: var(--border);
+            font-size: 14px;
+            cursor: pointer;
+            transition: .2s;
+        }
 
-    /* remove margin-left; let gap handle spacing */
-    nav a,
-    nav form button {
-        padding: 10px 14px;
-        text-decoration: none;
-        border: 1px solid var(--border);
-        border-radius: 400px;
-        background: transparent;
-        color: var(--border);
-        font-size: 14px;
-        cursor: pointer;
-        transition: .2s;
-    }
+        nav a:hover,
+        nav form button:hover {
+            background: #000;
+            color: #fff;
+        }
 
-    nav a:hover,
-    nav form button:hover {
-        background: #000;
-        color: #fff;
-    }
+        main {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
 
-    /* keep the logout form inline so it behaves like a link */
-    nav form {
-        margin: 0;
-    }
+        h1 {
+            margin: 0 0 16px;
+        }
 
-    main {
-        max-width: 1000px;
-        margin: 40px auto;
-        padding: 0 20px;
-    }
+        .summary {
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            padding: 16px;
+        }
 
-    h1 {
-        margin: 0 0 16px;
-    }
+        .row {
+            display: grid;
+            grid-template-columns: 64px 1fr auto auto;
+            gap: 12px;
+            align-items: center;
+            padding: 10px 0;
+            border-top: 1px solid #eee;
+        }
 
-    .toolbar {
-        display: flex;
-        gap: 10px;
-        margin: 10px 0 20px;
-        flex-wrap: wrap;
-    }
+        .row:first-child {
+            border-top: none;
+        }
 
-    .btn {
-        padding: 10px 14px;
-        border: 1px solid var(--border);
-        border-radius: 400px;
-        background: transparent;
-        cursor: pointer;
-    }
+        .thumb {
+            width: 64px;
+            height: 64px;
+            object-fit: cover;
+            border: 1px solid #eee;
+            border-radius: 8px;
+        }
 
-    .btn:hover {
-        background: #000;
-        color: #fff;
-    }
+        .muted {
+            color: var(--muted);
+        }
 
-    #cart-items .cart-row {
-        display: grid;
-        grid-template-columns: 64px 1fr auto auto auto;
-        gap: 12px;
-        align-items: center;
-        padding: 12px 0;
-        border-top: 1px solid #eee;
-    }
+        .btn {
+            padding: 10px 14px;
+            border: 1px solid var(--border);
+            border-radius: 400px;
+            background: transparent;
+            cursor: pointer;
+        }
 
-    #cart-items .cart-row:first-child {
-        border-top: none;
-    }
+        .btn:hover {
+            background: #000;
+            color: #fff;
+        }
 
-    .thumb {
-        width: 64px;
-        height: 64px;
-        object-fit: cover;
-        border: 1px solid #eee;
-        border-radius: 8px;
-    }
+        .totals {
+            margin-top: 12px;
+        }
 
-    .info .title {
-        font-weight: 600;
-    }
 
-    .info .price {
-        color: var(--muted);
-        margin-top: 4px;
-    }
 
-    .qty {
-        width: 80px;
-        padding: 8px;
-        border: 1px solid #ccc;
-        border-radius: 10px;
-    }
+        .logo {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+            transform: scale(1.9);
+            transform-origin: left center;
+            margin-left: 15px;
+        
+        }
 
-    .totals {
-        margin-top: 20px;
-        padding: 16px;
-        background: #fff;
-        border: 1px solid #eee;
-        border-radius: 12px;
-    }
-
-    .badge {
-        display: inline-block;
-        min-width: 22px;
-        padding: 2px 6px;
-        border-radius: 12px;
-        background: #000;
-        color: #fff;
-        text-align: center;
-        font-size: 12px;
-    }
-
-    .logo {
-        height: 60px;
-        width: auto;
-        object-fit: contain;
-        transform: scale(1.9);
-        transform-origin: left center;
-        margin-left: 15px;
-    }
-</style>
-
+    </style>
 </head>
 
 <body>
