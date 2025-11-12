@@ -141,7 +141,7 @@ function e($s)
             transform: scale(1.9);
             transform-origin: left center;
             margin-left: 15px;
-        
+
         }
 
 
@@ -277,6 +277,7 @@ function e($s)
                 url('hero.jpg') center/cover no-repeat;
             min-height: 340px;
         }
+
         .sectionTitle {
             text-align: center;
             margin: 32px 0 18px;
@@ -389,6 +390,19 @@ function e($s)
             color: #666;
         }
 
+        .badge {
+            display: inline-block;
+            min-width: 22px;
+            padding: 2px 6px;
+            border-radius: 12px;
+            background: #000;
+            color: #fff;
+            text-align: center;
+            font-size: 12px;
+            margin-left: 4px;
+        }
+
+
         @media (max-width:880px) {
             .hero {
                 grid-template-columns: 1fr;
@@ -423,16 +437,25 @@ function e($s)
                     <a href="login/login.php">Login</a>
                     <a href="login/register.php">Register</a>
                 <?php else: ?>
+                    <!-- Cart button for logged-in users -->
+                    <a href="cart.php">
+                        Cart
+                        <span id="cart-count" class="badge">0</span>
+                    </a>
+
                     <?php if ($is_admin): ?>
                         <a href="admin/category.php">Category</a>
                         <a href="admin/brand.php">Brand</a>
                         <a href="admin/product.php">Product</a>
                     <?php endif; ?>
+
                     <form action="login/logout.php" method="post" style="display:inline;">
                         <button type="submit">Logout</button>
                     </form>
                 <?php endif; ?>
             </div>
+
+
         </nav>
     </header>
 
