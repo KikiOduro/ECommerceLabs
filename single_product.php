@@ -126,7 +126,7 @@ if (!$raw) {
         </div>
         <nav>
             <a href="all_product.php">All Products</a>
-            <a href="cart.php">Cart <span id="cart-count" class="badge">0</span></a>
+            <a href="admin/cart.php">Cart <span id="cart-count" class="badge">0</span></a>
         </nav>
     </header>
 
