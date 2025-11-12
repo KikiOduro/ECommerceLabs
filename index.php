@@ -438,7 +438,7 @@ function e($s)
                     <a href="login/register.php">Register</a>
                 <?php else: ?>
                     <!-- Cart button for logged-in users -->
-                    <a href="../cart.php">
+                    <a href="../admin/cart.php">
                         Cart
                         <span id="cart-count" class="badge">0</span>
                     </a>
