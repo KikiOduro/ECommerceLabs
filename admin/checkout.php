@@ -139,12 +139,12 @@ $is_admin  = isAdmin();
             <img src="assets/logo.png" alt="RadiantRoot" style="height:28px;width:auto;">
         </div>
         <nav>
-            <a href="all_product.php">Shop</a>
-            <a href="cart.php">Cart <span id="cart-count" class="badge">0</span></a>
+            <a href="../all_product.php">Shop</a>
+            <a href="../cart.php">Cart <span id="cart-count" class="badge">0</span></a>
             <?php if ($is_admin): ?>
-                <a href="admin/category.php">Category</a>
-                <a href="admin/brand.php">Brand</a>
-                <a href="admin/product.php">Product</a>
+                <a href="../admin/category.php">Category</a>
+                <a href="../admin/brand.php">Brand</a>
+                <a href="../admin/product.php">Product</a>
             <?php endif; ?>
             <form action="login/logout.php" method="post"><button type="submit">Logout</button></form>
         </nav>
